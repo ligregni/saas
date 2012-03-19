@@ -7644,3 +7644,45 @@ Started GET "/movies?utf8=%E2%9C%93&ratings%5BG%5D=1&ratings%5BPG%5D=1&commit=Re
   [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" WHERE (rating in ("G" , "PG" )) ORDER BY release_date
 Rendered movies/index.html.haml within layouts/application (8.5ms)
 Completed 200 OK in 26ms (Views: 15.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2012-03-19 09:30:21 +0000
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT distinct rating FROM "movies" [0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies" WHERE (1=0)
+Rendered movies/index.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 22ms (Views: 12.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-19 09:30:21 +0000
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-19 09:30:21 +0000
+Served asset /jquery.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-19 09:30:21 +0000
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-19 09:30:21 +0000
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/movies?utf8=%E2%9C%93&ratings%5BPG%5D=1&commit=Refresh" for 127.0.0.1 at 2012-03-19 09:30:24 +0000
+  Processing by MoviesController#index as HTML
+  Parameters: {"utf8"=>"✓", "ratings"=>{"PG"=>"1"}, "commit"=>"Refresh"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT distinct rating FROM "movies" [0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" WHERE (rating in ('PG' ))
+Rendered movies/index.html.haml within layouts/application (8.0ms)
+Completed 200 OK in 74ms (Views: 15.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/movies?utf8=%E2%9C%93&ratings%5BG%5D=1&ratings%5BPG%5D=1&commit=Refresh" for 127.0.0.1 at 2012-03-19 09:30:26 +0000
+  Processing by MoviesController#index as HTML
+  Parameters: {"utf8"=>"✓", "ratings"=>{"G"=>"1", "PG"=>"1"}, "commit"=>"Refresh"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT distinct rating FROM "movies" [0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" WHERE (rating in ('G' , 'PG' ))
+Rendered movies/index.html.haml within layouts/application (8.6ms)
+Completed 200 OK in 26ms (Views: 15.7ms | ActiveRecord: 0.9ms)

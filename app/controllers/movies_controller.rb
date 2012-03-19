@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     cond = ""
     if params[:ratings] and params[:ratings].respond_to?(:keys)
       params[:ratings].keys.each do |i|
-        cond += '"'+i+'"' + " , "
+        cond += '\''+i+'\'' + " , "
       end
     end
     cond[-2] = ' ' if cond[-2] == "," if cond.length > 3
