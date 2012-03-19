@@ -8,14 +8,28 @@ class MoviesController < ApplicationController
 
   def index
     if !params[:criteria]
-      @movies = Movie.all
-      @classes = {}
-      [@movies, @classes]
-    elsif (params[:criteria])
-      @movies = Movie.all(:order => "#{params[:criteria]}")
-      @classes = { params[:criteria] => "hilite" }
-      [@movies, @classes]
+      params[:criteria] = session[:criteria]
+    else
+      params[:ratings] = session[:ratings]
     end
+    cond = ""
+    params[:ratings].keys.each do |i|
+      cond += '"'+i+'"' + " , "
+    end if params[:ratings]
+    cond[-2] = ' ' if cond[-2] == ","
+# debugger
+    @all_ratings = Movie.getCategories
+    @classes = {}
+    if !params[:criteria]
+      @movies = Movie.all(:conditions => "rating in (#{cond})")
+    elsif (params[:criteria])
+      @movies = Movie.all(:conditions => "rating in (#{cond})", :order => "#{params[:criteria]}")
+      @classes = { params[:criteria] => "hilite" }
+    end
+    @criteria = params[:criteria]
+    session[:criteria] = @criteria
+    session[:ratings] = params[:ratings]
+    [@movies, @classes, @all_ratings, session]
   end
 
   def new
