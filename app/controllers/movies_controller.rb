@@ -13,17 +13,19 @@ class MoviesController < ApplicationController
       params[:ratings] = session[:ratings]
     end
     cond = ""
-    params[:ratings].keys.each do |i|
-      cond += '"'+i+'"' + " , "
-    end if params[:ratings]
-    cond[-2] = ' ' if cond[-2] == ","
+    if params[:ratings]
+      params[:ratings].keys.each do |i|
+        cond += '"'+i+'"' + " , "
+      end
+    end
+    cond[-2] = ' ' if cond[-2] == "," if cond.length > 3
 # debugger
     @all_ratings = Movie.getCategories
     @classes = {}
     if !params[:criteria]
-      @movies = Movie.all(:conditions => "rating in (#{cond})")
+      @movies = Movie.all(:conditions => cond.length > 2 ? "rating in (#{cond})" : "1=0")
     elsif (params[:criteria])
-      @movies = Movie.all(:conditions => "rating in (#{cond})", :order => "#{params[:criteria]}")
+      @movies = Movie.all(:conditions => cond.length > 2 ? "rating in (#{cond})" : "1=0", :order => "#{params[:criteria]}")
       @classes = { params[:criteria] => "hilite" }
     end
     @criteria = params[:criteria]
