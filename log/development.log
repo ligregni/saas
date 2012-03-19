@@ -1,0 +1,18 @@
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-03-19 02:08:29 +0000
+Served asset /rails.png - 200 OK (3ms)
+
+
+Started GET "/db" for 127.0.0.1 at 2012-03-19 02:09:46 +0000
+
+ActionController::RoutingError (No route matches [GET] "/db"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (32.2ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2012-03-19 02:11:01 +0000
+  Processing by Rails::InfoController#properties as */*
+Rendered inline template (0.4ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
