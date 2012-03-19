@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
       params[:ratings] = session[:ratings]
     end
     cond = ""
-    if params[:ratings]
+    if params[:ratings] and params[:ratings].respond_to?(:keys)
       params[:ratings].keys.each do |i|
         cond += '"'+i+'"' + " , "
       end
@@ -28,8 +28,7 @@ class MoviesController < ApplicationController
       @movies = Movie.all(:conditions => cond.length > 2 ? "rating in (#{cond})" : "1=0", :order => "#{params[:criteria]}")
       @classes = { params[:criteria] => "hilite" }
     end
-    @criteria = params[:criteria]
-    session[:criteria] = @criteria
+    session[:criteria] = params[:criteria]
     session[:ratings] = params[:ratings]
     [@movies, @classes, @all_ratings, session]
   end

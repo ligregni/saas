@@ -7551,3 +7551,96 @@ Started GET "/movies?utf8=%E2%9C%93&ratings%5BG%5D=1&ratings%5BPG%5D=1&commit=Re
   [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" WHERE (rating in ("G" , "PG" )) ORDER BY release_date
 Rendered movies/index.html.haml within layouts/application (8.1ms)
 Completed 200 OK in 25ms (Views: 15.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-03-19 09:18:14 +0000
+Served asset /rails.png - 200 OK (0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2012-03-19 09:18:19 +0000
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT distinct rating FROM "movies" [0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies" WHERE (1=0) ORDER BY release_date
+Rendered movies/index.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 22ms (Views: 12.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/movies?utf8=%E2%9C%93&ratings%5BPG%5D=1&commit=Refresh" for 127.0.0.1 at 2012-03-19 09:18:22 +0000
+  Processing by MoviesController#index as HTML
+  Parameters: {"utf8"=>"✓", "ratings"=>{"PG"=>"1"}, "commit"=>"Refresh"}
+Completed 500 Internal Server Error in 11ms
+
+NameError (undefined local variable or method `keys' for #<MoviesController:0xbbd5424>):
+  app/controllers/movies_controller.rb:16:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2012-03-19 09:18:42 +0000
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT distinct rating FROM "movies" [0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies" WHERE (1=0) ORDER BY release_date
+Rendered movies/index.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 23ms (Views: 12.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/movies?utf8=%E2%9C%93&ratings%5BPG%5D=1&commit=Refresh" for 127.0.0.1 at 2012-03-19 09:18:45 +0000
+  Processing by MoviesController#index as HTML
+  Parameters: {"utf8"=>"✓", "ratings"=>{"PG"=>"1"}, "commit"=>"Refresh"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `responds_to' for {"PG"=>"1"}:ActiveSupport::HashWithIndifferentAccess):
+  app/controllers/movies_controller.rb:16:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.4ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2012-03-19 09:19:16 +0000
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT distinct rating FROM "movies" [0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies" WHERE (1=0) ORDER BY release_date
+Rendered movies/index.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 22ms (Views: 12.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/movies?utf8=%E2%9C%93&ratings%5BPG%5D=1&commit=Refresh" for 127.0.0.1 at 2012-03-19 09:19:18 +0000
+  Processing by MoviesController#index as HTML
+  Parameters: {"utf8"=>"✓", "ratings"=>{"PG"=>"1"}, "commit"=>"Refresh"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `respond_to' for {"PG"=>"1"}:ActiveSupport::HashWithIndifferentAccess):
+  app/controllers/movies_controller.rb:16:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.7ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2012-03-19 09:19:56 +0000
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT distinct rating FROM "movies" [0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies" WHERE (1=0) ORDER BY release_date
+Rendered movies/index.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 23ms (Views: 12.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/movies?utf8=%E2%9C%93&ratings%5BPG%5D=1&commit=Refresh" for 127.0.0.1 at 2012-03-19 09:19:59 +0000
+  Processing by MoviesController#index as HTML
+  Parameters: {"utf8"=>"✓", "ratings"=>{"PG"=>"1"}, "commit"=>"Refresh"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT distinct rating FROM "movies" [0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" WHERE (rating in ("PG" )) ORDER BY release_date
+Rendered movies/index.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 24ms (Views: 13.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/movies?utf8=%E2%9C%93&ratings%5BG%5D=1&ratings%5BPG%5D=1&commit=Refresh" for 127.0.0.1 at 2012-03-19 09:20:05 +0000
+  Processing by MoviesController#index as HTML
+  Parameters: {"utf8"=>"✓", "ratings"=>{"G"=>"1", "PG"=>"1"}, "commit"=>"Refresh"}
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT distinct rating FROM "movies" [0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" WHERE (rating in ("G" , "PG" )) ORDER BY release_date
+Rendered movies/index.html.haml within layouts/application (8.5ms)
+Completed 200 OK in 26ms (Views: 15.5ms | ActiveRecord: 1.0ms)
