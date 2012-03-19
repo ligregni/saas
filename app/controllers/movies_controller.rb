@@ -9,6 +9,8 @@ class MoviesController < ApplicationController
   def index
     if !params[:criteria]
       @movies = Movie.all
+      @classes = {}
+      [@movies, @classes]
     elsif (params[:criteria])
       @movies = Movie.all(:order => "#{params[:criteria]}")
       @classes = { params[:criteria] => "hilite" }
