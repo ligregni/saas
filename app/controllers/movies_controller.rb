@@ -23,9 +23,11 @@ class MoviesController < ApplicationController
     @all_ratings = Movie.getCategories
     @classes = {}
     if !params[:criteria]
-      @movies = Movie.all(:conditions => cond.length > 2 ? "rating in (#{cond})" : "1=0")
+#@movies = Movie.all(:conditions => cond.length > 2 ? "rating in (#{cond})" : "1=0")
+      @movies = Movie.all()
     elsif (params[:criteria])
-      @movies = Movie.all(:conditions => cond.length > 2 ? "rating in (#{cond})" : "1=0", :order => "#{params[:criteria]}")
+#@movies = Movie.all(:conditions => cond.length > 2 ? "rating in (#{cond})" : "1=0", :order => "#{params[:criteria]}")
+      @movies = Movie.all(:order => "#{params[:criteria]}")
       @classes = { params[:criteria] => "hilite" }
     end
     session[:criteria] = params[:criteria]
