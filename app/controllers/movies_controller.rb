@@ -7,13 +7,15 @@ class MoviesController < ApplicationController
   end
 
   def index
-=begin
     if !params[:criteria]
       params[:criteria] = session[:criteria]
-    elsif !params[:ratings]
+    end
+    if !params[:ratings]
       params[:ratings] = session[:ratings]
     end
-=end
+    if !params[:redi]
+      redirect_to movies_path(:criteria => params[:criteria], :ratings => params[:ratings], :redi => true)
+    end
     cond = ""
     if params[:ratings] and params[:ratings].respond_to?(:keys)
       params[:ratings].keys.each do |i|
@@ -21,19 +23,16 @@ class MoviesController < ApplicationController
       end
     end
     cond[-2] = ' ' if cond[-2] == "," if cond.length > 3
-# debugger
     @all_ratings = Movie.getCategories
     @classes = {}
     if !params[:criteria]
       @movies = Movie.all(:conditions => (cond.length > 2 ? "rating in (#{cond})" : "1=0"))
-#@movies = Movie.all()
     elsif (params[:criteria])
       @movies = Movie.all(:conditions => (cond.length > 2 ? "rating in (#{cond})" : "1=0"), :order => "#{params[:criteria]}")
-#@movies = Movie.all(:order => "#{params[:criteria]}")
       @classes = { params[:criteria] => "hilite" }
     end
-#session[:criteria] = params[:criteria]
-#   session[:ratings] = params[:ratings]
+    session[:criteria] = params[:criteria]
+    session[:ratings] = params[:ratings]
     [@movies, @classes, @all_ratings, session]
   end
 
