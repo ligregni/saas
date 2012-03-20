@@ -7,11 +7,13 @@ class MoviesController < ApplicationController
   end
 
   def index
+=begin
     if !params[:criteria]
       params[:criteria] = session[:criteria]
-    else
+    elsif !params[:ratings]
       params[:ratings] = session[:ratings]
     end
+=end
     cond = ""
     if params[:ratings] and params[:ratings].respond_to?(:keys)
       params[:ratings].keys.each do |i|
@@ -30,8 +32,8 @@ class MoviesController < ApplicationController
 #@movies = Movie.all(:order => "#{params[:criteria]}")
       @classes = { params[:criteria] => "hilite" }
     end
-    session[:criteria] = params[:criteria]
-    session[:ratings] = params[:ratings]
+#session[:criteria] = params[:criteria]
+#   session[:ratings] = params[:ratings]
     [@movies, @classes, @all_ratings, session]
   end
 

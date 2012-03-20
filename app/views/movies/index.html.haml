@@ -5,16 +5,16 @@
   Include: 
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", "1", (session[:ratings].has_key?(rating) rescue false)
+    = check_box_tag "ratings[#{rating}]", "1", (params[:ratings].has_key?(rating) rescue false)
   = submit_tag 'Refresh', :id => "ratings_submit"
 
 %table#movies
   %thead
     %tr
-      %th{:class => @classes["title"] ? @classes["title"] : "nula"}= link_to "Movie Title", movies_path(:criteria => :title), :id => "title_header"
+      %th{:class => @classes["title"] ? @classes["title"] : "nula"}= link_to "Movie Title", movies_path(:criteria => :title, :ratings => params[:ratings]), :id => "title_header"
       -#%th= link_to "Movie Title", movies_path(:criteria => :title), :id => "title_header"
       %th Rating
-      %th{:class => @classes["release_date"] ? @classes["release_date"] : "nula"}= link_to "Release Date", movies_path(:criteria => :release_date), :id => "release_date_header"
+      %th{:class => @classes["release_date"] ? @classes["release_date"] : "nula"}= link_to "Release Date", movies_path(:criteria => :release_date, :ratings => params[:ratings]), :id => "release_date_header"
       %th More Info
   %tbody
     - @movies.each do |movie|
